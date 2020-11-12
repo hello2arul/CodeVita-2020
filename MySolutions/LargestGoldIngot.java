@@ -18,6 +18,7 @@ class LargestGoldIngot {
         // finding the largest cuboid volume
         // see below for the simpler solution
         // we will be storing the indices in the stack
+        // previous smaller
         Stack<Integer> stack = new Stack<>();
         stack.add(0);
         int max = 0;
@@ -29,7 +30,7 @@ class LargestGoldIngot {
             if(current >= golds[stack.peek()]) {
                 stack.add(i);
             }else{
-                // while the top of the stack is greateer that the curent element keep popping,
+                // current will be the right smaller and stack will hold the left smaller
                 while(!stack.isEmpty() && current < golds[stack.peek()]) {
                     int temp = golds[stack.pop()];
                     if(stack.isEmpty()) {
